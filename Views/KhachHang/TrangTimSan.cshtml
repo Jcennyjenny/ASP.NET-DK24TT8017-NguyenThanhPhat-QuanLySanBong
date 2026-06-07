@@ -1,0 +1,73 @@
+﻿@model IEnumerable<QuanLySanBong.Models.SanBong>
+@{
+    Layout = "_Layout";
+}
+
+<div class="container mt-4">
+    <div class="card shadow p-4 mb-4 bg-light">
+        <h3 class="text-center text-success text-uppercase fw-bold mb-3">🔍 Tìm Kiếm & Đặt Sân Trống</h3>
+
+        <form action="/KhachHang/TimSanTrong" method="post" class="row g-3 justify-content-center">
+            <div class="col-md-3">
+                <label class="form-label fw-bold">Chọn Ngày Đá:</label>
+                <input type="date" name="ngayDa" value="@(ViewBag.NgayDa ?? ViewBag.NgayDaStr)" class="form-control" required />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label fw-bold">Giờ Bắt Đầu:</label>
+                <select name="gioBatDau" class="form-select">
+                    <option value="16:00">16:00</option>
+                    <option value="17:30">17:30</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:30">20:30</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label fw-bold">Giờ Kết Thúc:</label>
+                <select name="gioKetThuc" class="form-select">
+                    <option value="17:30">17:30</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:30">20:30</option>
+                    <option value="22:00">22:00</option>
+                </select>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-success w-100 fw-bold">Kiểm Tra Sân</button>
+            </div>
+        </form>
+    </div>
+
+    @if (Model != null)
+    {
+        <h4 class="mb-3 text-dark">Danh sách sân còn trống trong khung giờ (@ViewBag.GioBatDauStr - @ViewBag.GioKetThucStr):</h4>
+
+        @if (!Model.Any())
+        {
+            <div class="alert alert-warning text-center">Rất tiếc, tất cả các sân trong khung giờ này đã kín lịch. Vui lòng chọn giờ khác!</div>
+        }
+        else
+        {
+            <div class="row">
+                @foreach (var san in Model)
+                {
+                    <div class="col-md-4 mb-3">
+                        <div class="card border-success shadow-sm h-100">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold text-success">@san.TenSan</h5>
+                                <p class="card-text mb-1">⚽ Quy mô: <strong>Sân @san.LoaiSan người</strong></p>
+                                <p class="card-text text-danger fw-bold">💰 Giá: @san.GiaTheoGio.ToString("N0") VNĐ/Giờ</p>
+
+                                <form action="/KhachHang/XulyDatSan" method="post">
+                                    <input type="hidden" name="maSan" value="@san.MaSan" />
+                                    <input type="hidden" name="ngayDa" value="@ViewBag.NgayDaStr" />
+                                    <input type="hidden" name="gioBatDau" value="@ViewBag.GioBatDauStr" />
+                                    <input type="hidden" name="gioKetThuc" value="@ViewBag.GioKetThucStr" />
+                                    <button type="submit" class="btn btn-outline-success w-100 fw-bold mt-2">🛒 Đặt Sân Ngay</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    }
+</div>

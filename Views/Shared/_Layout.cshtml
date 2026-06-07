@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hệ Thống Quản Lý Sân Bóng Trực Tuyến</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+
+    <style>
+            body {
+                font-family: 'Be Vietnam Pro', sans-serif;
+                background-color: #f4f6f9;
+                color: #333;
+            }
+            /* Đổi style cho thanh điều hướng mang đậm chất thể thao */
+            .navbar-custom {
+                background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                padding: 15px 0;
+            }
+
+                .navbar-custom .navbar-brand {
+                    color: #fff;
+                    font-weight: 700;
+                    font-size: 1.4rem;
+                    letter-spacing: 0.5px;
+                }
+
+                .navbar-custom .nav-link {
+                    color: rgba(255,255,255,0.85) !important;
+                    font-weight: 600;
+                    padding: 8px 16px !important;
+                    border-radius: 6px;
+                    transition: all 0.3s ease;
+                }
+
+                    .navbar-custom .nav-link:hover {
+                        color: #fff !important;
+                        background-color: rgba(255,255,255,0.15);
+                    }
+            /* Custom các nút bấm và Card cho hiện đại */
+            .card {
+                border: none;
+                border-radius: 12px;
+                box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+                transition: transform 0.2s;
+            }
+
+                .card:hover {
+                    transform: translateY(-2px);
+                }
+
+            .btn {
+                border-radius: 8px;
+                font-weight: 600;
+                padding: 8px 18px;
+            }
+            /* Thiết kế bảng ma trận sân bóng mượt mà hơn */
+            .table-custom {
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            }
+
+                .table-custom thead {
+                    background-color: #1e3c72;
+                    color: white;
+                }
+
+            .status-slot {
+                font-size: 0.9rem;
+                border-radius: 8px !important;
+                padding: 10px !important;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-custom mb-4">
+            <div class="container">
+                <a class="navbar-brand" href="/">🏟️ SÂN THÀNH PHÁT</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Admin/TinhTrangSanHienTai">📅 Trạng Thái Ca</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Admin/DanhSachSan">⚽ Quản Lý Sân</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Admin/DanhSachKhachHang">👥 Khách Hàng</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/KhachHang/TrangTimSan">🔍 Tìm & Đặt Sân</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/KhachHang/LichSuDatSan">📋 Lịch Sử Đặt</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                    <ul class="navbar-nav align-items-center">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item me-3">
+                                <span class="text-white opacity-75 small">Xin chào,</span>
+                                <span class="text-white d-block fw-bold">@User.Identity.Name</span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-danger btn-sm px-3 shadow-sm" href="/TaiKhoan/DangXuat">Đăng xuất</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="/TaiKhoan/DangNhap">Đăng Nhập</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-light btn-sm text-primary ms-2 px-3" href="/TaiKhoan/DangKy">Đăng Ký</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-5">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

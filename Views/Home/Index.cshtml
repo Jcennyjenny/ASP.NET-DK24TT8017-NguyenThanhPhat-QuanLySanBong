@@ -1,0 +1,106 @@
+﻿@{
+    ViewData["Title"] = "Trang Chủ - Sân Thành Phát";
+}
+
+<style>
+    /* Đổi nền trang chủ thành màu xanh lá cỏ thể thao dịu mắt */
+    body {
+        background-color: #e8f5e9 !important; /* Màu xanh cỏ nhạt, sạch sẽ nâng nền */
+    }
+
+    /* Khung bọc nội dung chính giữa */
+    .hero-section {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        border-top: 5px solid #2e7d32; /* Viền trên màu xanh lá đậm */
+    }
+
+    /* Hiệu ứng cho nút Tìm Sân Ngay */
+    .btn-cta {
+        background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+        color: white !important;
+        font-size: 1.25rem;
+        font-weight: 700;
+        padding: 15px 40px;
+        border-radius: 50px;
+        box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: inline-block;
+        text-decoration: none;
+    }
+
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.5);
+        }
+
+    /* Cấu hình khung ảnh 2 bên */
+    .banner-box {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        border: 3px solid #ffffff;
+        height: 100%;
+        min-height: 350px;
+        background-color: #ddd;
+    }
+
+        .banner-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    /* Footer chứa địa chỉ ở dưới cùng */
+    .footer-info {
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid #c8e6c9;
+        color: #4e5d4c;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="row align-items-center g-4">
+
+        <div class="col-lg-3 col-md-4">
+            <div class="banner-box">
+                <img src="/images/vandijk.jpg" alt="Sân Bóng Thành Phát 1" onerror="this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=500&auto=format&fit=crop';">
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-4">
+            <div class="hero-section">
+                <h1 class="fw-bold text-success mb-3" style="letter-spacing: -0.5px;">CHÀO MỪNG BẠN ĐẾN VỚI</h1>
+                <h2 class="fw-bold text-dark mb-4" style="font-size: 2.2rem;">HỆ THỐNG ĐẶT SÂN THÀNH PHÁT</h2>
+                <p class="text-muted fs-5 mb-5">Trải nghiệm hệ thống quản lý, đặt sân bóng cỏ nhân tạo trực tuyến thông minh, nhanh chóng và giữ chỗ tiện lợi chỉ trong vài cú click chuột.</p>
+
+                <a href="/KhachHang/TrangTimSan" class="btn-cta">
+                    ⚽ Tìm Sân Ngay ⚽
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4">
+            <div class="banner-box">
+                <img src="/images/messi.jpg" alt="Sân Bóng Thành Phát 2" onerror="this.src='https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=500&auto=format&fit=crop';">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center footer-info">
+            <p class="mb-1 fw-bold text-dark">📍 Địa chỉ: 56 đường 35, Khu phố 3, TT Củ Chi, Huyện Củ Chi, TPHCM</p>
+            <p class="mb-1 fw-bold text-success">📞 Số điện thoại đặt sân: 0918368838</p>
+            <p class="text-muted small">© Bản quyền thuộc về Sân Bóng Thành Phát ®</p>
+        </div>
+    </div>
+</div>

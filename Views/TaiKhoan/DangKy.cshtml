@@ -1,0 +1,38 @@
+﻿@model QuanLySanBong.Models.NguoiDung
+@{
+    Layout = "_Layout";
+}
+<div class="row justify-content-center mt-4">
+    <div class="col-md-5 card p-4 shadow">
+        <h3 class="text-center text-success mb-3">ĐĂNG KÝ TÀI KHOẢN KHÁCH</h3>
+
+        @if (ViewBag.Loi != null)
+        {
+            <div class="alert alert-danger">@ViewBag.Loi</div>
+        }
+
+        <form action="/TaiKhoan/DangKy" method="post">
+            <div class="mb-3">
+                <label class="form-label">Tên đăng nhập mới</label>
+                <input type="text" asp-for="TenDangNhap" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Mật khẩu</label>
+                <input type="password" asp-for="MatKhau" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Họ và Tên</label>
+                <input type="text" asp-for="HoTen" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Số điện thoại</label>
+                <input type="text" asp-for="SoDienThoai" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email (Không bắt buộc)</label>
+                <input type="email" asp-for="Email" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-success w-100">Đăng Ký Tài Khoản</button>
+        </form>
+    </div>
+</div>

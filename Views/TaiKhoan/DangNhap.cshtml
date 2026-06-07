@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "_Layout";
+}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4 card p-4 shadow">
+        <h3 class="text-center text-primary mb-3">ĐĂNG NHẬP HỆ THỐNG</h3>
+
+        @if (ViewBag.Loi != null)
+        {
+            <div class="alert alert-danger">@ViewBag.Loi</div>
+        }
+
+        <form action="/TaiKhoan/DangNhap" method="post">
+            <div class="mb-3">
+                <label class="form-label">Tên đăng nhập</label>
+                <input type="text" name="tenDangNhap" class="form-control" required placeholder="Tên tài khoản..." />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Mật khẩu</label>
+                <input type="password" name="matKhau" class="form-control" required placeholder="Vui lòng nhập mật khẩu" />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Đăng Nhập</button>
+        </form>
+        <p class="text-center mt-3">Chưa có tài khoản? <a href="/TaiKhoan/DangKy">Đăng ký ngay</a></p>
+    </div>
+</div>

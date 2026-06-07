@@ -1,0 +1,35 @@
+﻿@model IEnumerable<QuanLySanBong.Models.NguoiDung>
+@{
+    Layout = "_Layout";
+}
+<div class="container mt-4">
+    <h2 class="mb-3 text-uppercase">Danh Sách Khách Hàng Đăng Ký Hệ Thống</h2>
+    <div class="card shadow p-3">
+        <table class="table table-bordered table-striped align-middle text-center">
+            <thead class="table-primary">
+                <tr>
+                    <th>ID Khách</th>
+                    <th>Họ và Tên</th>
+                    <th>Tên Tài Khoản</th>
+                    <th>Số Điện Thoại liên hệ</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.MaNguoiDung</td>
+                        <td class="fw-bold text-dark text-start ps-4">@user.HoTen</td>
+                        <td><span class="badge bg-secondary">@user.TenDangNhap</span></td>
+                        <td class="text-success fw-bold">@user.SoDienThoai</td>
+                        <td>@user.Email</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="mt-3">
+        <a href="/Admin/TinhTrangSanHienTai" class="btn btn-secondary">🔙 Quay lại bảng trạng thái ca trực</a>
+    </div>
+</div>
